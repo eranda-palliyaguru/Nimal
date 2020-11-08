@@ -3,7 +3,7 @@
 <head>
 	<?php
 		  include("connect.php");
-	
+
 	$invo = $_GET['id'];
 	$co = substr($invo,0,2) ;
 			?>
@@ -29,52 +29,52 @@
 <body onload="window.print() " style=" font-size: 13px; font-family: arial;">
 <?php
 $sec = "1";
-?><meta http-equiv="refresh" content="<?php echo $sec;?>;URL='sales1.php'">	
+?><meta http-equiv="refresh" content="<?php echo $sec;?>;URL='sales1.php'">
 <div class="wrapper">
   <!-- Main content -->
   <section class="invoice">
-	  
-	  
-	  
-	  
+
+
+
+
 	  <div class="row">
         <!-- accepted payments column -->
         <div class="col-xs-6">
-           <h3>HM Motors.</h3>
+           <h3>Nimal Motors.</h3>
 	  <p>NO.56/3/1 Ambalangoda Road,Uragasmanhandiya. <br>
 	  Email: Hmmotors2017@gmail.com <br>
-	  	  
-	<h4><b>Phone No: 0777 873343</b><br>	
-		  Date:<?php date_default_timezone_set("Asia/Colombo"); 
+
+	<h4><b>Phone No: 0777 873343</b><br>
+		  Date:<?php date_default_timezone_set("Asia/Colombo");
     echo date("Y-m-d"); echo "  Time-";  echo date("h:ia")  ?>
 			</h4></p>
-	  
+
         </div>
         <!-- /.col -->
-		  
-		  
-		  
-		  
+
+
+
+
         <div class="col-xs-6">
           <small class="pull-right"><img src="honda.png" width="120" alt="">
         </div> <h4>
 		  <?php if ($co=="qt"){
 		 echo $_GET['vehicle_no']."...";
-	} 
+	}
 		  if ($co>0){
 		 $next_m=date("m")+4;
 		$next_y=date("Y");
 		$next_d=date("d");
-			  
-	$sira=""; 		  
+
+	$sira="";
 	if($next_d > 26){$next_d="26";}
 	if($next_m > 12){$next_m=$next_m-12;$next_y=$next_y+1;}
 	if($next_m < 10){ $sira="0"; }
-	
+
 			  $next_date=$next_y."-".$sira.$next_m."-".$next_d;
-		 
-			  
-			   $invo=$_GET['id'];	
+
+
+			   $invo=$_GET['id'];
 				$result = $db->prepare("SELECT * FROM sales WHERE   invoice_number='$invo'");
 				$result->bindParam(':userid', $date);
                 $result->execute();
@@ -86,16 +86,16 @@ $sec = "1";
 					echo "<br>";
 					echo "<b>Next Service Mileage: </b>".$kkm."Km...";
 					echo "<br>";
-					
+
 					echo "<b>Next Service Date: </b>".$next_date;
 					echo "<br>";
-					
+
 				echo "<b>Model: </b>".$row['model'];
 					echo "<br></h6></b>";
 				}
 			  }  if ($co=="ds"){
-		 
-			   $invo=$_GET['id'];	
+
+			   $invo=$_GET['id'];
 				$result = $db->prepare("SELECT * FROM sales WHERE   invoice_number='$invo'");
 				$result->bindParam(':userid', $date);
                 $result->execute();
@@ -104,7 +104,7 @@ $sec = "1";
 					echo "<br>";
 					echo "<b>Mileage: </b>".$row['km']."Km";
 					echo "<br>";
-					
+
 				echo "<b>Model: </b>".$row['model'];
 					echo "<br></h6></b>";
 				}
@@ -115,18 +115,18 @@ $sec = "1";
           <h3>
 		  <?php if ($co=="qt"){
 		echo "Quotations";
-	} 
+	}
 		  if ($co>0){
-		 
+
 			  echo "Final Bill";
-				
+
 			  }  if ($co=="ds"){
-		 
+
 			  echo "Final Bill";
 			   } ?>
 			  </h3>
       </div></div>
-  
+
 <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -134,7 +134,7 @@ $sec = "1";
 				<th>ID Code</th>
 				<th>Product</th>
                   <th>Qty</th>
-                  
+
                   <th>Amount </th>
                 </tr>
                 </thead>
@@ -153,7 +153,7 @@ $sec = "1";
 				<td><?php echo $row['code'];?></td>
                   <td><?php echo $row['name'];?></td>
 				  <td><?php echo $row['qty'];?></td>
-                  
+
                   <td>Rs.<?php echo $row['price'];?></td>
 					<?php $tot_amount+= $row['price'];?>
                   <?php } ?>
@@ -163,16 +163,16 @@ $sec = "1";
                 </tfoot>
               </table>
 	<?php
-				$result1 = $db->prepare("SELECT * FROM sales WHERE   invoice_number='$invo'  ");		
+				$result1 = $db->prepare("SELECT * FROM sales WHERE   invoice_number='$invo'  ");
 					$result1->bindParam(':userid', $date);
                 $result1->execute();
                 for($i=0; $row1 = $result1->fetch(); $i++){
 				//$tot_amount=$row1['amount'];
 					$balance=$row1['balance'];
 				}
-			?>  
+			?>
 	<div class="col-xs-6">
-         
+
           <div class="table-responsive">
             <table class="table">
 			<tr>
