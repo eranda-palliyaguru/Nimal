@@ -41,10 +41,10 @@ $sec = "1";
         <!-- accepted payments column -->
         <div class="col-xs-6">
            <h3>Nimal Motors.</h3>
-	  <p>NO.56/3/1 Ambalangoda Road,Uragasmanhandiya. <br>
-	  Email: Hmmotors2017@gmail.com <br>
+	  <p>Puwak waththa, Yakkalamulla, Galle. <br>
 
-	<h4><b>Phone No: 0777 873343</b><br>
+
+	<h4><b>Phone No: 077 2362648</b><br>
 		  Date:<?php date_default_timezone_set("Asia/Colombo");
     echo date("Y-m-d"); echo "  Time-";  echo date("h:ia")  ?>
 			</h4></p>
